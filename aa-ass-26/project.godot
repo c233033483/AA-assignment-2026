@@ -12,7 +12,11 @@ config_version=5
 
 config/name="AA ass 26"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://Assets/icon.svg"
+
+[debug_draw_3d]
+
+settings/addon_root_folder="res://addons/debug_draw_3d"
 
 [physics]
 

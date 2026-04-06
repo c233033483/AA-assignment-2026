@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bkk1t86h6tsoc"]
 
-[ext_resource type="Script" uid="uid://b207c6r460as2" path="res://boid.gd" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://b207c6r460as2" path="res://Scripts/creature.gd" id="1_jjgbg"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_0xm2m"]
 size = Vector3(0.1, 0.1, 0.5)
@@ -11,7 +11,7 @@ size = Vector3(0.1, 0.1, 0.5)
 [node name="root" type="Node3D" unique_id=838548442]
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1590576874]
-script = ExtResource("1_ig7tw")
+script = ExtResource("1_jjgbg")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D" unique_id=2080036509]
 mesh = SubResource("BoxMesh_0xm2m")
