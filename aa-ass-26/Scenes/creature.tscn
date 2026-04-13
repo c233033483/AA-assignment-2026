@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://b84jyklcj1v64"]
+[gd_scene format=3 uid="uid://bkk1t86h6tsoc"]
 
 [ext_resource type="Script" uid="uid://b207c6r460as2" path="res://Scripts/creature.gd" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://d2v70l0thsrd7" path="res://Scripts/State_Machine.gd" id="2_bo1nx"]
