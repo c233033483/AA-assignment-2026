@@ -1,49 +1,57 @@
-class_name Larva
-extends CharacterBody3D
+class_name Larva extends CharacterBody3D
 
-# Stats
-@export var speed: float = 2.0
-@export var max_energy: float = 100.0
-@export var energy_drain: float = 3.0
-@export var bounds_radius: float = 10.0
+@export var speed: float = 3.0
+@export var food_detect_radius: float = 8.0
+@export var avoid_radius: float = 2.0
+@export var bounds_radius: float = 9.0
 
-var energy: float = 50.0
-
-# Targeting
 var target_food: Node3D = null
 
-# Internal refs
-@onready var state_machine: StateMachine = $StateMachine
-@onready var mesh: Node3D = $Mesh
-
 func _ready() -> void:
-	add_to_group("creatures")
-	energy = max_energy * 0.5
+	add_to_group("larvas")
 
 func _physics_process(delta: float) -> void:
-	energy -= energy_drain * delta
-	energy = clamp(energy, 0.0, max_energy)
-
 	# Gravity
 	if not is_on_floor():
 		velocity.y -= 9.8 * delta
 
 	move_and_slide()
 
+	# Soft boundary — push back toward center if wandering too far
+	var flat_pos = Vector3(global_position.x, 0.0, global_position.z)
+	if flat_pos.length() > bounds_radius:
+		var push = -flat_pos.normalized() * speed
+		velocity.x = push.x
+		velocity.z = push.z
 
-#func evolve() -> void:
-	#var adult_scene = preload("res://scenes/Adult.tscn")
-	#var adult: Adult = adult_scene.instantiate()
-	#adult.global_position = global_position
-	## Pass along anything the adult should inherit
-	#adult.energy = max_energy  # born with full energy after evolving
-	#get_tree().current_scene.add_child(adult)
-	#die()
+	# Face the direction of travel
+	var flat_vel = Vector3(velocity.x, 0.0, velocity.z)
+	if flat_vel.length() > 0.1:
+		look_at(global_position + flat_vel, Vector3.UP)
 
-func die() -> void:
-	remove_from_group("creatures")
-	queue_free()
-
-func seek_force(target: Vector3) -> Vector3:
-	var desired = (target - global_position).normalized() * speed
+# Returns a steering force that curves the boid toward target_pos
+func seek_force(target_pos: Vector3) -> Vector3:
+	var desired := (target_pos - global_position).normalized() * speed
 	return desired - velocity
+
+func find_nearest_food() -> Node3D:
+	var nearest: Node3D = null
+	var best_dist := food_detect_radius
+	for f: Node3D in get_tree().get_nodes_in_group("food"):
+		var d := global_position.distance_to(f.global_position)
+		if d < best_dist:
+			best_dist = d
+			nearest = f
+	return nearest
+
+func find_nearest_larva() -> Node3D:
+	var nearest: Node3D = null
+	var best_dist := avoid_radius
+	for l: Node3D in get_tree().get_nodes_in_group("larvas"):
+		if l == self:
+			continue
+		var d := global_position.distance_to(l.global_position)
+		if d < best_dist:
+			best_dist = d
+			nearest = l
+	return nearest

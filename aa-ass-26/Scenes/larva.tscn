@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://q875135u5fg6" path="res://Scripts/larva.gd" id="1_q8poq"]
 [ext_resource type="Script" uid="uid://d2v70l0thsrd7" path="res://Scripts/State_Machine.gd" id="2_q8poq"]
 [ext_resource type="Script" uid="uid://dp0468m51bgad" path="res://Scripts/LarvaWander.gd" id="3_q8poq"]
+[ext_resource type="Script" uid="uid://dntysoxyuh5ie" path="res://Scripts/LarvaSeek.gd" id="4_mym0m"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_0xm2m"]
 size = Vector3(0.1, 0.1, 0.5)
@@ -19,12 +20,12 @@ mesh = SubResource("BoxMesh_0xm2m")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1010085196]
 shape = SubResource("BoxShape3D_h2yge")
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=2098628647]
-transform = Transform3D(-0.99933606, 0, -0.03643436, -0.008606805, 0.97169775, 0.23607083, 0.03540319, 0.23622766, -0.9710526, 0, 0.35377944, -0.6889294)
-
-[node name="StateMachine" type="Node" parent="." unique_id=1586307948]
+[node name="StateMachine" type="Node" parent="." unique_id=1332414991]
 script = ExtResource("2_q8poq")
-metadata/_custom_type_script = "uid://d2v70l0thsrd7"
+initial_state = NodePath("LarvaWander")
 
-[node name="Wander" type="Node" parent="." unique_id=1333447973]
+[node name="LarvaWander" type="Node" parent="StateMachine" unique_id=1333447973]
 script = ExtResource("3_q8poq")
+
+[node name="LarvaSeek" type="Node" parent="StateMachine" unique_id=1579233399]
+script = ExtResource("4_mym0m")

@@ -1,19 +1,19 @@
 class_name State extends Node
 
+var boid: Larva
+var sm: StateMachine
 
-var state_machine
-
-func _enter():
-	pass
-
-func _exit():
-	pass
+func _ready() -> void:
 	
-func _think():
-	pass
- 
+	sm = get_parent() as StateMachine
+	boid = sm.get_parent() as Larva
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	state_machine = get_parent()
-	pass # Replace with function body.
+func _enter() -> void:
+	pass
+
+func _exit() -> void:
+	pass
+
+# Called every frame by StateMachine — put behaviour + transitions here
+func _think(_delta: float) -> void:
+	pass
