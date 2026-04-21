@@ -1,3 +1,33 @@
 [gd_scene format=3 uid="uid://dogy0b0ld2h0j"]
 
+[ext_resource type="PackedScene" uid="uid://dwm4q2aeo4rsa" path="res://Scenes/larva.tscn" id="1_8pcac"]
+
+[sub_resource type="Gradient" id="Gradient_8pcac"]
+colors = PackedColorArray(0.76, 0.45790002, 0.418, 1, 0, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_jr8sf"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jq62l"]
+width = 1028
+height = 1028
+noise = SubResource("FastNoiseLite_jr8sf")
+color_ramp = SubResource("Gradient_8pcac")
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_77se5"]
+panorama = SubResource("NoiseTexture2D_jq62l")
+
+[sub_resource type="Sky" id="Sky_t32ky"]
+sky_material = SubResource("PanoramaSkyMaterial_77se5")
+
+[sub_resource type="Environment" id="Environment_lsoic"]
+background_mode = 2
+background_color = Color(0.90313697, 0.7152598, 0.85328406, 1)
+background_energy_multiplier = 0.4
+sky = SubResource("Sky_t32ky")
+
 [node name="WorldMain" type="Node3D" unique_id=676854544]
+
+[node name="CharacterBody3D" parent="." unique_id=1181100274 instance=ExtResource("1_8pcac")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=974675477]
+environment = SubResource("Environment_lsoic")

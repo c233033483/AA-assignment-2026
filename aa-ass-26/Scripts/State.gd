@@ -1,14 +1,14 @@
 class_name State extends Node
 
-var boid
+
 var state_machine
 
-func _enter() -> void:
-	pass  # called when this state becomes active
+func _enter():
+	pass
 
-func _exit() -> void:
-	pass  # called when leaving this state
-
+func _exit():
+	pass
+	
 func _think():
 	pass
  

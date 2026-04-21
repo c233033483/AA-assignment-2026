@@ -24,13 +24,13 @@ var has_laid_egg: bool = false
 
 # --- Internal refs ---
 @onready var state_machine: StateMachine = $StateMachine
-@onready var larva_mesh: Node3D = $LarvaMesh
-@onready var adult_mesh: Node3D = $AdultMesh
+#@onready var larva_mesh: Node3D = $LarvaMesh
+#@onready var adult_mesh: Node3D = $AdultMesh
 
 func _ready() -> void:
 	add_to_group("creatures")
 	energy = max_energy * 0.5
-	adult_mesh.visible = false
+	#adult_mesh.visible = false
 
 func _physics_process(delta: float) -> void:
 	energy -= energy_drain * delta
@@ -50,8 +50,8 @@ func evolve_to_adult() -> void:
 	speed = 3.5
 	energy = max_energy
 	lifespan_timer = 30.0
-	larva_mesh.visible = false
-	adult_mesh.visible = true
+	#larva_mesh.visible = false
+	#adult_mesh.visible = true
 	print(name + " evolved into adult!")
 
 func die() -> void:

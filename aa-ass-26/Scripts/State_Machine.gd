@@ -1,62 +1,42 @@
-class_name StateMachine
-extends Node
+class_name StateMachine extends Node
 
-@export var initial_state: PackedScene
-@export var global_state: PackedScene
+@export var initial_state:NodePath
+@export var global_state_path:NodePath
 
-var current_state: State
-var global_state_node: State
-var previous_state: State
-var boid: Node
+var current_state:State
+var global_state:State
+var previous_state:State
 
-func _ready() -> void:
-	boid = get_parent()
-	
-	if global_state:
-		global_state_node = global_state.instantiate()
-		global_state_node.boid = boid
-		global_state_node.state_machine = self
-		add_child(global_state_node)
-		global_state_node.call_deferred("_enter")
-	
-	if initial_state:
-		var first_state: State = initial_state.instantiate()
-		call_deferred("change_state", first_state)
+var boid
 
-func _process(_delta: float) -> void:
+func change_state(new_state):
+	print(str(boid) + "\t" + new_state.get_class())
 	if current_state:
-		current_state._think()
-	if global_state_node:
-		global_state_node._think()
-	
-	# Debug display (remove if you don't have DebugDraw2D installed)
-	if current_state and current_state.get_script():
-		var cur = current_state.get_script().resource_path.get_file()
-		var glob = global_state_node.get_script().resource_path.get_file() if global_state_node else "none"
-		DebugDraw2D.set_text("SM: " + boid.name, cur + "  |  global: " + glob)
-
-func change_state(new_state: State) -> void:
-	if current_state:
-		previous_state = current_state
 		current_state._exit()
-		boid.remove_child(current_state)
-		current_state.queue_free()
-	
+		boid.call_deferred("remove_child", current_state);
 	current_state = new_state
-	
 	if current_state:
-		current_state.boid = boid
-		current_state.state_machine = self
-		boid.add_child(current_state)
+		boid.add_child(current_state);
 		current_state._enter()
 	
-	_log_transition()
+func _ready():
+	boid = get_parent()
+	if initial_state:
+		current_state = get_node(initial_state)
+		current_state.call_deferred("_enter")
+		# current_state._enter()
+	if global_state_path:
+		global_state = get_node(global_state_path)
+		# Ready may not have been called!
+		global_state.call_deferred("_enter")
+		# current_state._enter()
+	pass
 
-func revert_to_previous_state() -> void:
-	if previous_state:
-		change_state(previous_state.duplicate())
-
-func _log_transition() -> void:
-	if current_state and current_state.get_script():
-		var state_name = current_state.get_script().resource_path.get_file().get_basename()
-		print("[%s] → %s" % [boid.name, state_name])
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	#DebugDraw2D.set_text("SM: " + get_parent().name, current_state.get_script().resource_path.get_file() + " " + (global_state.get_script().resource_path.get_file() if global_state else ""))
+	
+	if current_state:
+		current_state._think()
+	if global_state:
+		global_state._think()
