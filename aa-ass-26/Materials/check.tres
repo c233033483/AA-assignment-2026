@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://boyqk7pvt4wyp"]
+
+[ext_resource type="Texture2D" uid="uid://fbjnkrnraxsl" path="res://Materials/Checkerboard_pattern.svg.png" id="1_737lg"]
+
+[resource]
+albedo_texture = ExtResource("1_737lg")

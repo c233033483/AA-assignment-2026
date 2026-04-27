@@ -4,6 +4,8 @@ class_name LarvaSeek extends State
 
 func _think(delta: float) -> void:
 	# ── TRANSITIONS ──────────────────────────────────────────
+	if not boid.can_change_state():
+		return
 	if not is_instance_valid(boid.target_food):
 		boid.target_food = null
 		sm.change_state(sm.get_node("LarvaWander") as State)
@@ -25,11 +27,8 @@ func _think(delta: float) -> void:
 		sm.change_state(sm.get_node("LarvaWander") as State)
 		return
 
-	var steering := boid.seek_force(target_pos)
-	boid.velocity.x += steering.x * delta
-	boid.velocity.z += steering.z * delta
-
+	var desired := boid.seek_force(target_pos)
 	var flat := Vector3(boid.velocity.x, 0.0, boid.velocity.z)
-	flat = flat.limit_length(boid.speed)
+	flat = flat.lerp(desired, boid.turn_speed * delta)
 	boid.velocity.x = flat.x
 	boid.velocity.z = flat.z

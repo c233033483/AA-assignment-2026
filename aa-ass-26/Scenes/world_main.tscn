@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://dogy0b0ld2h0j"]
 
 [ext_resource type="PackedScene" uid="uid://dwm4q2aeo4rsa" path="res://Scenes/larva.tscn" id="1_8pcac"]
+[ext_resource type="Script" uid="uid://cwhsh7so70ev0" path="res://Scripts/game_manager.gd" id="1_jq62l"]
+[ext_resource type="Material" uid="uid://boyqk7pvt4wyp" path="res://Materials/check.tres" id="2_jr8sf"]
 
 [sub_resource type="Gradient" id="Gradient_8pcac"]
 colors = PackedColorArray(0.76, 0.45790002, 0.418, 1, 0, 0, 0, 1)
@@ -25,14 +27,29 @@ background_color = Color(0.90313697, 0.7152598, 0.85328406, 1)
 background_energy_multiplier = 0.4
 sky = SubResource("Sky_t32ky")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jq62l"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_77se5"]
+material = SubResource("StandardMaterial3D_jq62l")
+
 [node name="WorldMain" type="Node3D" unique_id=676854544]
+script = ExtResource("1_jq62l")
+spawn_radius = 15.0
 
 [node name="CharacterBody3D" parent="." unique_id=1181100274 instance=ExtResource("1_8pcac")]
-food_detect_radius = 5.0
-bounds_radius = 5.0
+speed = 1.0
+max_force = 1.0
+turn_speed = 1.0
+food_detect_radius = 3.0
+bounds_radius = 20.0
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D" unique_id=31972351]
-transform = Transform3D(1, 0, 0, 0, 0.95985913, 0.28048244, 0, -0.28048244, 0.95985913, 0, 0.24638957, 0.52857375)
+transform = Transform3D(1, 0, 0, 0, 0.9258046, 0.37800235, 0, -0.37800235, 0.9258046, 0, 0.43867177, 0.69987965)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=974675477]
 environment = SubResource("Environment_lsoic")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2067088757]
+transform = Transform3D(10.486902, 0, 0, 0, 10.486902, 0, 0, 0, 10.486902, -1.1446104, -9.119156, 0.99232674)
+material_override = ExtResource("2_jr8sf")
+mesh = SubResource("PlaneMesh_77se5")
