@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="AA ass 26"
-run/main_scene="uid://bkk1t86h6tsoc"
+run/main_scene="uid://dogy0b0ld2h0j"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://Assets/icon.svg"
 

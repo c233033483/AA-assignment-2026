@@ -28,6 +28,11 @@ sky = SubResource("Sky_t32ky")
 [node name="WorldMain" type="Node3D" unique_id=676854544]
 
 [node name="CharacterBody3D" parent="." unique_id=1181100274 instance=ExtResource("1_8pcac")]
+food_detect_radius = 5.0
+bounds_radius = 5.0
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D" unique_id=31972351]
+transform = Transform3D(1, 0, 0, 0, 0.95985913, 0.28048244, 0, -0.28048244, 0.95985913, 0, 0.24638957, 0.52857375)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=974675477]
 environment = SubResource("Environment_lsoic")

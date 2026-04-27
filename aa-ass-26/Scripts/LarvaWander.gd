@@ -49,8 +49,7 @@ func _think(delta: float) -> void:
 	flat = flat.limit_length(boid.speed * wander_speed)
 	boid.velocity.x = flat.x
 	boid.velocity.z = flat.z
-
-	# ── GIZMOS ───────────────────────────────────────────────
+	
 	if show_gizmos:
 		_draw_gizmos()
 
