@@ -1,22 +1,13 @@
-class_name Steering_Behavior extends Node
+class_name Steering_Behaviour extends Node
 
-@export var weight = 1.0
-@export var draw_gizmos = true
+@export var enabled: bool = false
+@export var weight:  float = 1.0
 
-var boid
+var boid: Larva
 
-@export var enabled = true: get = is_enabled, set = set_enabled
+func _ready() -> void:
+	boid = get_parent().get_parent() as Larva
 
-func set_enabled(e):
-	enabled = e 
-	set_process(enabled)
-
-func is_enabled():
-	return enabled
-	
-func on_draw_gizmos():
-	pass
-	
-func _process(delta):	
-	if draw_gizmos and enabled:
-		on_draw_gizmos()
+## Override this in each behaviour — return a steering force Vector3
+func calculate() -> Vector3:
+	return Vector3.ZERO

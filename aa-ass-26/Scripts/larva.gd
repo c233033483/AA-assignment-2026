@@ -1,50 +1,57 @@
 class_name Larva extends CharacterBody3D
 
-@export var speed: float = 3.0
-@export var max_force: float = 4.0
-@export var turn_speed: float = 4.0
+@export var speed: float             = 3.0
+@export var max_force: float         = 6.0
+@export var turn_speed: float        = 4.0
 @export var food_detect_radius: float = 8.0
-@export var avoid_radius: float = 2.0
-@export var bounds_radius: float = 9.0
+@export var avoid_radius: float      = 2.0
+@export var bounds_radius: float     = 9.0
 
 var target_food: Node3D = null
 
-# State cooldown — prevents flickering between states
-var _state_cooldown: float = 0.0
-const MIN_STATE_TIME: float = 0.4
+@onready var _behaviours: Array[Steering_Behaviour] = []
 
 func _ready() -> void:
 	add_to_group("larvas")
+	for child in $Behaviours.get_children():
+		if child is Steering_Behaviour:
+			_behaviours.append(child)
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y -= 9.8 * delta
 
+	# Accumulate steering forces in priority order
+	var force_acc := Vector3.ZERO
+	for b in _behaviours:
+		if not b.enabled:
+			continue
+		var f := b.calculate() * b.weight
+		if is_nan(f.x) or is_nan(f.y) or is_nan(f.z):
+			continue
+		force_acc += f
+		if force_acc.length() > max_force:
+			force_acc = force_acc.limit_length(max_force)
+			break
+
+	# Lerp velocity toward desired force for smooth turning
+	var flat := Vector3(velocity.x, 0.0, velocity.z)
+	flat = flat.lerp(force_acc, turn_speed * delta)
+	velocity.x = flat.x
+	velocity.z = flat.z
+
 	move_and_slide()
-
-	_state_cooldown -= delta
-
-	var flat_pos := Vector3(global_position.x, 0.0, global_position.z)
-	if flat_pos.length() > bounds_radius:
-		var push := -flat_pos.normalized() * speed
-		velocity.x = push.x
-		velocity.z = push.z
 
 	var flat_vel := Vector3(velocity.x, 0.0, velocity.z)
 	if flat_vel.length() > 0.1:
 		look_at(global_position + flat_vel, Vector3.UP)
 
-# Clamped seek force — can't exceed max_force per second
 func seek_force(target_pos: Vector3) -> Vector3:
 	var desired := (target_pos - global_position).normalized() * speed
-	var steering := desired - velocity
-	return steering.limit_length(max_force)
+	return (desired - velocity).limit_length(max_force)
 
-func can_change_state() -> bool:
-	return _state_cooldown <= 0.0
-
-func reset_state_cooldown() -> void:
-	_state_cooldown = MIN_STATE_TIME
+func get_behaviour(behaviour_name: String) -> Steering_Behaviour:
+	return $Behaviours.get_node(behaviour_name) as Steering_Behaviour
 
 func find_nearest_food() -> Node3D:
 	var nearest: Node3D = null

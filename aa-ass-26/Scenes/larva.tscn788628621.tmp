@@ -6,10 +6,6 @@
 [ext_resource type="Script" uid="uid://bk18y38l8whqq" path="res://Scripts/Larva_wander.gd" id="3_rawww"]
 [ext_resource type="Script" uid="uid://c01qsn3v3aky0" path="res://Scripts/Larva_seek.gd" id="4_jsymf"]
 [ext_resource type="Script" uid="uid://dntysoxyuh5ie" path="res://Scripts/Behaviour_Seek.gd" id="4_mym0m"]
-[ext_resource type="Script" uid="uid://btpsy0ll688en" path="res://Scripts/Larva_avoid.gd" id="5_et0bi"]
-[ext_resource type="Script" uid="uid://d36worp2g0fg6" path="res://Scripts/Steering_Behaviour.gd" id="5_jsymf"]
-[ext_resource type="Script" uid="uid://6cw1kvmpdf27" path="res://Scripts/Behaviour_Avoid.gd" id="7_kxc88"]
-[ext_resource type="Script" uid="uid://cp2vl37b8ynpy" path="res://Scripts/Behaviour_Bounds.gd" id="8_tw4yt"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_0xm2m"]
 size = Vector3(0.1, 0.1, 0.5)
@@ -21,6 +17,12 @@ size = Vector3(0.1, 0.1, 0.5)
 axis_lock_linear_y = true
 axis_lock_angular_y = true
 script = ExtResource("1_q8poq")
+speed = null
+max_force = null
+turn_speed = null
+food_detect_radius = null
+avoid_radius = null
+bounds_radius = null
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2083518274]
 mesh = SubResource("BoxMesh_0xm2m")
@@ -39,25 +41,10 @@ metadata/_custom_type_script = "uid://bk18y38l8whqq"
 script = ExtResource("4_jsymf")
 metadata/_custom_type_script = "uid://c01qsn3v3aky0"
 
-[node name="Larva_Avoid" type="Node" parent="StateMachine" unique_id=246909171]
-script = ExtResource("5_et0bi")
-metadata/_custom_type_script = "uid://btpsy0ll688en"
-
 [node name="Behaviours" type="Node" parent="." unique_id=199822738]
-script = ExtResource("5_jsymf")
 
-[node name="Behaviour_Avoid" type="Node" parent="Behaviours" unique_id=1141290840]
-script = ExtResource("7_kxc88")
-metadata/_custom_type_script = "uid://6cw1kvmpdf27"
-
-[node name="Behaviour_Bounds" type="Node" parent="Behaviours" unique_id=777833398]
-script = ExtResource("8_tw4yt")
-metadata/_custom_type_script = "uid://cp2vl37b8ynpy"
-
-[node name="Behaviour_Seek" type="Node" parent="Behaviours" unique_id=150311927]
-script = ExtResource("4_mym0m")
-metadata/_custom_type_script = "uid://dntysoxyuh5ie"
-
-[node name="Behaviour_Wander" type="Node" parent="Behaviours" unique_id=168787630]
+[node name="Wander" type="Node" parent="Behaviours" unique_id=1246773953]
 script = ExtResource("3_q8poq")
-metadata/_custom_type_script = "uid://dp0468m51bgad"
+
+[node name="Seek" type="Node" parent="Behaviours" unique_id=2142926950]
+script = ExtResource("4_mym0m")
