@@ -15,7 +15,7 @@ func change_state(new_state: State) -> void:
 	if current_state:
 		current_state._exit()
 	current_state = new_state
-	boid.reset_state_cooldown()
+	#boid.reset_state_cooldown()
 	if current_state:
 		current_state._enter()
 	print("[SM] → ", current_state.name)

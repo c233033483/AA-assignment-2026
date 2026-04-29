@@ -11,9 +11,9 @@ func _think(delta: float) -> void:
 	if not threat:
 		# Safe — resume food seek if we still have a target, else wander
 		if is_instance_valid(boid.target_food):
-			sm.change_state(sm.get_node("LarvaSeek") as State)
+			sm.change_state(sm.get_node("Larva_Seek") as State)
 		else:
-			sm.change_state(sm.get_node("LarvaWander") as State)
+			sm.change_state(sm.get_node("Larva_Wander") as State)
 		return
 
 	# ── AVOIDANCE STEERING ───────────────────────────────────
