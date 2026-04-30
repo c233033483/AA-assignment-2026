@@ -3,10 +3,10 @@ class_name Larva_Seek extends State
 @export var arrival_radius: float = 0.5
 
 func _enter() -> void:
-	boid.get_behaviour("Larva_Seek").enabled   = true
-	boid.get_behaviour("Larva_Bounds").enabled = true
-	boid.get_behaviour("Larva_Wander").enabled = false
-	boid.get_behaviour("Larva_Avoid").enabled  = false
+	boid.get_behaviour("Behaviour_Seek").enabled   = true
+	boid.get_behaviour("Behaviour_Bounds").enabled = true
+	boid.get_behaviour("Behaviour_Wander").enabled = false
+	boid.get_behaviour("Behaviour_Avoid").enabled  = false
 
 func _think(_delta: float) -> void:
 	if boid.find_nearest_larva():

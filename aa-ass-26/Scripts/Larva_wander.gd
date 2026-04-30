@@ -1,10 +1,10 @@
 class_name Larva_Wander extends State
 
 func _enter() -> void:
-	boid.get_behaviour("Larva_Wander").enabled = true
-	boid.get_behaviour("Larva_Bounds").enabled = true
-	boid.get_behaviour("Larva_Seek").enabled   = false
-	boid.get_behaviour("Larva_Avoid").enabled  = false
+	boid.get_behaviour("Behaviour_Wander").enabled = true
+	boid.get_behaviour("Behaviour_Bounds").enabled = true
+	boid.get_behaviour("Behaviour_Seek").enabled   = false
+	boid.get_behaviour("Behaviour_Avoid").enabled  = false
 
 func _think(_delta: float) -> void:
 	var food := boid.find_nearest_food()

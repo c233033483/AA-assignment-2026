@@ -30,6 +30,7 @@ shape = SubResource("BoxShape3D_h2yge")
 
 [node name="StateMachine" type="Node" parent="." unique_id=1332414991]
 script = ExtResource("2_q8poq")
+initial_state = NodePath("Larva_Wander")
 
 [node name="Larva_Wander" type="Node" parent="StateMachine" unique_id=1740372118]
 script = ExtResource("3_rawww")

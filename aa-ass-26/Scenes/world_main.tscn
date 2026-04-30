@@ -41,7 +41,6 @@ speed = 1.0
 max_force = 1.0
 turn_speed = 1.0
 food_detect_radius = 3.0
-avoid_radius = 2.0
 bounds_radius = 20.0
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D" unique_id=31972351]
