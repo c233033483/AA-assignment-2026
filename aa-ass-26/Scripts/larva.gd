@@ -1,11 +1,15 @@
 class_name Larva extends CharacterBody3D
 
-@export var speed: float             = 3.0
-@export var max_force: float         = 6.0
-@export var turn_speed: float        = 4.0
+@export var food_eaten: int
+@export var food_to_evolve: int = 5
+@export var adult_pref: PackedScene
+
+@export var speed: float = 3.0
+@export var max_force: float = 6.0
+@export var turn_speed: float = 4.0
 @export var food_detect_radius: float = 8.0
-@export var avoid_radius: float      = 2.0
-@export var bounds_radius: float     = 9.0
+@export var avoid_radius: float = 2.0
+@export var bounds_radius: float = 9.0
 
 var target_food: Node3D = null
 
@@ -74,3 +78,18 @@ func find_nearest_larva() -> Node3D:
 			best_dist = d
 			nearest = l
 	return nearest
+
+func eat_food() -> void:
+	food_eaten += 1
+	print("Food eaten: %d / %d" % [food_eaten, food_to_evolve])
+	if food_eaten >= food_to_evolve:
+		evolve()
+
+func evolve() -> void:
+	if adult_pref == null:
+		print("No adult scene assigned!")
+		return
+	var adult := adult_pref.instantiate()
+	adult.global_position = global_position
+	get_parent().add_child(adult)
+	queue_free()

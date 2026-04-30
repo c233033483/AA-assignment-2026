@@ -3,12 +3,16 @@ extends Node3D
 @export var food_count: int = 12
 @export var spawn_radius: float = 7.0
 
+@export var larva_count: int
+@export var larva_pref: PackedScene
+
 func _ready() -> void:
 	_spawn_food()
 
 func _spawn_food() -> void:
 	for i in food_count:
 		_spawn_one_food()
+	_spawn_larva()
 
 func _spawn_one_food() -> void:
 	var food := Node3D.new()
@@ -28,3 +32,14 @@ func _spawn_one_food() -> void:
 	mesh_inst.material_override = mat
 	food.add_child(mesh_inst)
 	add_child(food)
+	
+	
+func _spawn_larva() -> void:
+	for i in larva_count:
+		var larva := larva_pref.instantiate()
+		larva.position = Vector3(
+			randf_range(-spawn_radius, spawn_radius),
+			0.25,
+			randf_range(-spawn_radius, spawn_radius)
+		)
+		add_child(larva)

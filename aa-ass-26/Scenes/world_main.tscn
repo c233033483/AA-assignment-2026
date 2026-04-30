@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dogy0b0ld2h0j"]
 
-[ext_resource type="PackedScene" uid="uid://dwm4q2aeo4rsa" path="res://Scenes/larva.tscn" id="1_8pcac"]
+[ext_resource type="PackedScene" uid="uid://dwm4q2aeo4rsa" path="res://Scenes/prefabs/larva.tscn" id="1_8pcac"]
 [ext_resource type="Script" uid="uid://cwhsh7so70ev0" path="res://Scripts/game_manager.gd" id="1_jq62l"]
 [ext_resource type="Material" uid="uid://boyqk7pvt4wyp" path="res://Materials/check.tres" id="2_jr8sf"]
 
@@ -31,6 +31,8 @@ material = SubResource("StandardMaterial3D_jq62l")
 [node name="WorldMain" type="Node3D" unique_id=676854544]
 script = ExtResource("1_jq62l")
 spawn_radius = 10.0
+larva_count = 5
+larva_pref = ExtResource("1_8pcac")
 
 [node name="CharacterBody3D" parent="." unique_id=1181100274 instance=ExtResource("1_8pcac")]
 speed = 1.0

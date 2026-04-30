@@ -51,7 +51,7 @@ func evolve_to_adult() -> void:
 	energy = max_energy
 	lifespan_timer = 30.0
 	#larva_mesh.visible = false
-	#adult_mesh.visible = true
+	#dult_mesh.visible = true
 	print(name + " evolved into adult!")
 
 func die() -> void:

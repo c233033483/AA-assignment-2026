@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://q875135u5fg6" path="res://Scripts/larva.gd" id="1_q8poq"]
 [ext_resource type="Script" uid="uid://d2v70l0thsrd7" path="res://Scripts/State_Machine.gd" id="2_q8poq"]
+[ext_resource type="PackedScene" uid="uid://by8g6u4blt1yp" path="res://Scenes/prefabs/adult.tscn" id="2_w0djw"]
 [ext_resource type="Script" uid="uid://dp0468m51bgad" path="res://Scripts/Behaviour_Wander.gd" id="3_q8poq"]
 [ext_resource type="Script" uid="uid://bk18y38l8whqq" path="res://Scripts/Larva_wander.gd" id="3_rawww"]
 [ext_resource type="Script" uid="uid://c01qsn3v3aky0" path="res://Scripts/Larva_seek.gd" id="4_jsymf"]
@@ -21,6 +22,11 @@ size = Vector3(0.1, 0.1, 0.5)
 axis_lock_linear_y = true
 axis_lock_angular_y = true
 script = ExtResource("1_q8poq")
+food_to_evolve = 5
+adult_pref = ExtResource("2_w0djw")
+food_detect_radius = 3.0
+avoid_radius = 1.0
+bounds_radius = 12.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2083518274]
 mesh = SubResource("BoxMesh_0xm2m")

@@ -21,4 +21,6 @@ func _think(_delta: float) -> void:
 	if boid.global_position.distance_to(boid.target_food.global_position) < arrival_radius:
 		boid.target_food.queue_free()
 		boid.target_food = null
-		sm.change_state(sm.get_node("Larva_Wander") as State)
+		boid.eat_food()          # ← track + trigger evolve if threshold hit
+		if is_instance_valid(boid):
+			sm.change_state(sm.get_node("Larva_Wander") as State)
