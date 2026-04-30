@@ -4,16 +4,10 @@
 [ext_resource type="Script" uid="uid://cwhsh7so70ev0" path="res://Scripts/game_manager.gd" id="1_jq62l"]
 [ext_resource type="Material" uid="uid://boyqk7pvt4wyp" path="res://Materials/check.tres" id="2_jr8sf"]
 
-[sub_resource type="Gradient" id="Gradient_8pcac"]
-colors = PackedColorArray(0.76, 0.45790002, 0.418, 1, 0, 0, 0, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_jr8sf"]
-
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jq62l"]
 width = 1028
 height = 1028
-noise = SubResource("FastNoiseLite_jr8sf")
-color_ramp = SubResource("Gradient_8pcac")
+generate_mipmaps = false
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_77se5"]
 panorama = SubResource("NoiseTexture2D_jq62l")
@@ -23,9 +17,11 @@ sky_material = SubResource("PanoramaSkyMaterial_77se5")
 
 [sub_resource type="Environment" id="Environment_lsoic"]
 background_mode = 2
-background_color = Color(0.90313697, 0.7152598, 0.85328406, 1)
+background_color = Color(1, 1, 1, 1)
 background_energy_multiplier = 0.4
 sky = SubResource("Sky_t32ky")
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jq62l"]
 
@@ -34,7 +30,7 @@ material = SubResource("StandardMaterial3D_jq62l")
 
 [node name="WorldMain" type="Node3D" unique_id=676854544]
 script = ExtResource("1_jq62l")
-spawn_radius = 15.0
+spawn_radius = 10.0
 
 [node name="CharacterBody3D" parent="." unique_id=1181100274 instance=ExtResource("1_8pcac")]
 speed = 1.0
@@ -43,9 +39,6 @@ turn_speed = 1.0
 food_detect_radius = 3.0
 bounds_radius = 20.0
 
-[node name="Camera3D" type="Camera3D" parent="CharacterBody3D" unique_id=31972351]
-transform = Transform3D(1, 0, 0, 0, 0.9258046, 0.37800235, 0, -0.37800235, 0.9258046, 0, 0.43867177, 0.69987965)
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=974675477]
 environment = SubResource("Environment_lsoic")
 
@@ -53,3 +46,17 @@ environment = SubResource("Environment_lsoic")
 transform = Transform3D(10.486902, 0, 0, 0, 10.486902, 0, 0, 0, 10.486902, -1.1446104, -9.119156, 0.99232674)
 material_override = ExtResource("2_jr8sf")
 mesh = SubResource("PlaneMesh_77se5")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1403970084]
+
+[node name="Button" type="Button" parent="CanvasLayer" unique_id=1496737744]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 143.0
+offset_bottom = 95.0
+text = "Spawn food"
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1636839093]
+transform = Transform3D(1, 0, 0, 0, 1.1924881e-08, 1, 0, -1, 1.1924881e-08, 0, 13.435682, 0)
+
+[connection signal="button_down" from="CanvasLayer/Button" to="." method="_spawn_one_food"]
