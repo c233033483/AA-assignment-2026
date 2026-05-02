@@ -2,13 +2,13 @@ class_name StateMachine extends Node
 
 @export var initial_state: NodePath
 
-var current_state: State
-var boid: Larva
+var current_state
+var boid
 
 func _ready() -> void:
-	boid = get_parent() as Larva
+	boid = get_parent()
 	if initial_state:
-		current_state = get_node(initial_state) as State
+		current_state = get_node(initial_state)
 		current_state.call_deferred("_enter")
 
 func change_state(new_state: State) -> void:

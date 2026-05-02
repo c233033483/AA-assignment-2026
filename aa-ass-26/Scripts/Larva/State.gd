@@ -1,12 +1,11 @@
 class_name State extends Node
 
-var boid: Larva
+var boid: Node3D
 var sm: StateMachine
 
 func _ready() -> void:
-	
 	sm = get_parent() as StateMachine
-	boid = sm.get_parent() as Larva
+	boid = sm.get_parent() as Node3D
 
 func _enter() -> void:
 	pass
@@ -14,6 +13,5 @@ func _enter() -> void:
 func _exit() -> void:
 	pass
 
-# Called every frame by StateMachine — put behaviour + transitions here
 func _think(_delta: float) -> void:
 	pass

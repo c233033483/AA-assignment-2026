@@ -1,6 +1,6 @@
 class_name Larva extends CharacterBody3D
 
-@export var food_eaten: int
+var food_eaten: int
 @export var food_to_evolve: int = 5
 @export var adult_pref: PackedScene
 

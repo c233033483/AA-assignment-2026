@@ -6,10 +6,10 @@
 [ext_resource type="Script" uid="uid://k4kmo8lh5rmh" path="res://Scripts/Adult/Adult_Seek.gd" id="4_t6bck"]
 [ext_resource type="Script" uid="uid://bdrtv6kfmh18b" path="res://Scripts/Adult/Adult_Wander.gd" id="5_u5yjp"]
 [ext_resource type="Script" uid="uid://d36worp2g0fg6" path="res://Scripts/Steering_Behaviour.gd" id="6_hkhrk"]
-[ext_resource type="Script" uid="uid://6cw1kvmpdf27" path="res://Scripts/Behaviour_Avoid.gd" id="7_lsclu"]
-[ext_resource type="Script" uid="uid://cp2vl37b8ynpy" path="res://Scripts/Behaviour_Bounds.gd" id="8_hobsm"]
-[ext_resource type="Script" uid="uid://dntysoxyuh5ie" path="res://Scripts/Behaviour_Seek.gd" id="9_2xpun"]
-[ext_resource type="Script" uid="uid://dp0468m51bgad" path="res://Scripts/Behaviour_Wander.gd" id="10_megrt"]
+[ext_resource type="Script" uid="uid://6cw1kvmpdf27" path="res://Scripts/Larva/Behaviour_Avoid.gd" id="7_lsclu"]
+[ext_resource type="Script" uid="uid://cp2vl37b8ynpy" path="res://Scripts/Larva/Behaviour_Bounds.gd" id="8_hobsm"]
+[ext_resource type="Script" uid="uid://dntysoxyuh5ie" path="res://Scripts/Larva/Behaviour_Seek.gd" id="9_2xpun"]
+[ext_resource type="Script" uid="uid://dp0468m51bgad" path="res://Scripts/Larva/Behaviour_Wander.gd" id="10_megrt"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aomp7"]
 albedo_color = Color(0.85, 0.41012502, 0.2635, 1)
