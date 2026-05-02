@@ -6,8 +6,8 @@ class_name Adult_Behaviour_Wander extends Steering_Behaviour
 
 @export_group("Gizmos")
 @export var show_gizmos: bool = true
-@export var col_circle: Color = Color(0.2, 0.6, 1.0, 0.8)
-@export var col_target: Color = Color(1.0, 0.9, 0.1, 1.0)
+@export var col_circle: Color = Color(0.627, 0.44, 1.0, 0.8)
+@export var col_target: Color = Color(1.0, 0.691, 0.36, 1.0)
 
 var _wander_target: Vector3
 var _world_target:  Vector3

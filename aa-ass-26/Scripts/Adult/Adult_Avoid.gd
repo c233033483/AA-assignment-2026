@@ -11,4 +11,4 @@ func _think(_delta: float) -> void:
 		if is_instance_valid(boid.target_food):
 			sm.change_state(sm.get_node("Adult_Seek") as State)
 		else:
-			sm.change_state(sm.get_node("Adult_Wander") as State)e
+			sm.change_state(sm.get_node("Adult_Wander") as State)

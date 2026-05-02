@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dwm4q2aeo4rsa" path="res://Scenes/prefabs/larva.tscn" id="1_8pcac"]
 [ext_resource type="Script" uid="uid://cwhsh7so70ev0" path="res://Scripts/game_manager.gd" id="1_jq62l"]
 [ext_resource type="Material" uid="uid://boyqk7pvt4wyp" path="res://Materials/check.tres" id="2_jr8sf"]
+[ext_resource type="Script" uid="uid://bc6fns1gupxse" path="res://Scripts/Camera_controller.gd" id="4_77se5"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jq62l"]
 width = 1028
@@ -58,6 +59,7 @@ offset_bottom = 95.0
 text = "Spawn food"
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1636839093]
-transform = Transform3D(1, 0, 0, 0, 1.1924881e-08, 1, 0, -1, 1.1924881e-08, 0, 13.435682, 0)
+transform = Transform3D(-0.9224868, 0.07908508, -0.3778407, 0.08541692, 0.9963453, 1.7484555e-07, 0.3764598, -0.03227383, -0.9258706, 7.281, 0.361, 0)
+script = ExtResource("4_77se5")
 
 [connection signal="button_down" from="CanvasLayer/Button" to="." method="_spawn_one_food"]

@@ -8,7 +8,7 @@ class_name Behaviour_Avoid extends Steering_Behaviour
 @export var col_push:  Color  = Color(1.0, 0.0, 0.0, 0.9)
 
 func calculate() -> Vector3:
-	var threat := boid.find_nearest_larva()
+	var threat := (boid as Larva).find_nearest_larva()
 	if not threat:
 		return Vector3.ZERO
 

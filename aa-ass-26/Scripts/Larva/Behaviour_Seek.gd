@@ -8,7 +8,7 @@ func calculate() -> Vector3:
 	if not is_instance_valid(boid.target_food):
 		return Vector3.ZERO
 
-	var target_pos := boid.target_food.global_position
+	var target_pos := (boid as Larva).target_food.global_position
 
 	if show_gizmos:
 		DebugDraw3D.draw_line(boid.global_position, target_pos, col_seek)

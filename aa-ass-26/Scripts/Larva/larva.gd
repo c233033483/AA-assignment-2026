@@ -90,6 +90,7 @@ func evolve() -> void:
 		print("No adult scene assigned!")
 		return
 	var adult := adult_pref.instantiate()
-	adult.global_position = global_position
+	var spawn_pos := global_position
+	adult.global_position = spawn_pos
 	get_parent().add_child(adult)
 	queue_free()
