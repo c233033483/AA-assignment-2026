@@ -18,7 +18,7 @@ func change_state(new_state: State) -> void:
 	#boid.reset_state_cooldown()
 	if current_state:
 		current_state._enter()
-	print("[SM] → ", current_state.name)
+	#print("[SM] → ", current_state.name)
 
 func _process(delta: float) -> void:
 	if current_state:

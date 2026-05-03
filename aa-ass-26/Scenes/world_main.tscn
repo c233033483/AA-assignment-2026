@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dogy0b0ld2h0j"]
 
-[ext_resource type="PackedScene" uid="uid://dwm4q2aeo4rsa" path="res://Scenes/prefabs/larva.tscn" id="1_8pcac"]
+[ext_resource type="PackedScene" uid="uid://dwm4q2aeo4rsa" path="res://Scenes/larva.tscn" id="1_8pcac"]
 [ext_resource type="Script" uid="uid://cwhsh7so70ev0" path="res://Scripts/game_manager.gd" id="1_jq62l"]
 [ext_resource type="Script" uid="uid://bc6fns1gupxse" path="res://Scripts/Camera_controller.gd" id="4_77se5"]
 [ext_resource type="Texture2D" uid="uid://fbjnkrnraxsl" path="res://Materials/Checkerboard_pattern.svg.png" id="4_t32ky"]
@@ -38,7 +38,8 @@ material = SubResource("StandardMaterial3D_lsoic")
 [node name="WorldMain" type="Node3D" unique_id=676854544]
 script = ExtResource("1_jq62l")
 spawn_radius = 10.0
-larva_count = 5
+food_count = 4
+fly_height_max = 15.0
 larva_pref = ExtResource("1_8pcac")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=974675477]
@@ -47,11 +48,11 @@ environment = SubResource("Environment_lsoic")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1403970084]
 
 [node name="Button" type="Button" parent="CanvasLayer" unique_id=1496737744]
-offset_left = 20.0
-offset_top = 20.0
-offset_right = 143.0
-offset_bottom = 95.0
-text = "Spawn food"
+offset_left = 21.0
+offset_top = 18.0
+offset_right = 144.0
+offset_bottom = 93.0
+text = "Feed"
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1636839093]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 7.281, 0.361, 0)

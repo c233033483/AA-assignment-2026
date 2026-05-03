@@ -1,6 +1,6 @@
 class_name Larva_Seek extends State
 
-@export var arrival_radius: float = 0.5
+@export var arrival_radius: float = 1
 
 func _enter() -> void:
 	boid.get_behaviour("Behaviour_Seek").enabled   = true

@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://bm0tpppa5k6yt"]
 
 [ext_resource type="Script" uid="uid://bmnn7wqdpcps6" path="res://Scripts/Egg.gd" id="1_xt6u3"]
-[ext_resource type="PackedScene" uid="uid://dwm4q2aeo4rsa" path="res://Scenes/prefabs/larva.tscn" id="2_klx23"]
+[ext_resource type="PackedScene" uid="uid://dwm4q2aeo4rsa" path="res://Scenes/larva.tscn" id="2_klx23"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xt6u3"]
+albedo_color = Color(0.42, 0.65799993, 0.84, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_y42sk"]
 material = SubResource("StandardMaterial3D_xt6u3")
@@ -14,7 +15,8 @@ height = 0.28998536
 
 [node name="Egg" type="RigidBody3D" unique_id=900463035]
 script = ExtResource("1_xt6u3")
-larva_scene = ExtResource("2_klx23")
+hatch_time = 2.0
+larva_pref = ExtResource("2_klx23")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=986888361]
 transform = Transform3D(0.2, 0, 0, 0, 0.15, 0, 0, 0, 0.2, 0, 0, 0)

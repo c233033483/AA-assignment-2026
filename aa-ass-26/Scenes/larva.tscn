@@ -13,19 +13,21 @@
 [ext_resource type="Script" uid="uid://cp2vl37b8ynpy" path="res://Scripts/Larva/Behaviour_Bounds.gd" id="8_tw4yt"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_0xm2m"]
-size = Vector3(0.1, 0.1, 0.5)
+size = Vector3(0.25, 0.25, 1.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h2yge"]
-size = Vector3(0.1, 0.1, 0.5)
+size = Vector3(0.25, 0.25, 1.25)
 
 [node name="LarvaBody" type="CharacterBody3D" unique_id=1181100274]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 axis_lock_linear_y = true
 axis_lock_angular_y = true
 script = ExtResource("1_q8poq")
+food_to_evolve = 1
 adult_pref = ExtResource("2_w0djw")
+speed = 1.5
+turn_speed = 2.0
 food_detect_radius = 3.0
-avoid_radius = 1.0
 bounds_radius = 12.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2083518274]
@@ -44,6 +46,7 @@ metadata/_custom_type_script = "uid://bk18y38l8whqq"
 
 [node name="Larva_Seek" type="Node" parent="StateMachine" unique_id=2103512361]
 script = ExtResource("4_jsymf")
+arrival_radius = 1.2
 metadata/_custom_type_script = "uid://c01qsn3v3aky0"
 
 [node name="Larva_Avoid" type="Node" parent="StateMachine" unique_id=246909171]
