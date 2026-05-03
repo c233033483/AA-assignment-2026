@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bm0tpppa5k6yt"]
+
+[ext_resource type="Script" uid="uid://bmnn7wqdpcps6" path="res://Scripts/Egg.gd" id="1_xt6u3"]
+[ext_resource type="PackedScene" uid="uid://dwm4q2aeo4rsa" path="res://Scenes/prefabs/larva.tscn" id="2_klx23"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xt6u3"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_y42sk"]
+material = SubResource("StandardMaterial3D_xt6u3")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_c3uvd"]
+radius = 0.0005
+height = 0.28998536
+
+[node name="Egg" type="RigidBody3D" unique_id=900463035]
+script = ExtResource("1_xt6u3")
+larva_scene = ExtResource("2_klx23")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=986888361]
+transform = Transform3D(0.2, 0, 0, 0, 0.15, 0, 0, 0, 0.2, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_y42sk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=683153465]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0019506514, 0)
+shape = SubResource("CapsuleShape3D_c3uvd")

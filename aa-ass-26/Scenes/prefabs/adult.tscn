@@ -2,10 +2,12 @@
 
 [ext_resource type="Script" uid="uid://bdo2acgu5nxho" path="res://Scripts/Adult/adult.gd" id="1_pfcx5"]
 [ext_resource type="Script" uid="uid://d2v70l0thsrd7" path="res://Scripts/State_Machine.gd" id="2_t6bck"]
+[ext_resource type="PackedScene" uid="uid://bm0tpppa5k6yt" path="res://Scenes/prefabs/egg.tscn" id="2_u5yjp"]
 [ext_resource type="Script" uid="uid://ea3cpds566ov" path="res://Scripts/Adult/Adult_Avoid.gd" id="3_aomp7"]
 [ext_resource type="Script" uid="uid://k4kmo8lh5rmh" path="res://Scripts/Adult/Adult_Seek.gd" id="4_t6bck"]
 [ext_resource type="Script" uid="uid://bdrtv6kfmh18b" path="res://Scripts/Adult/Adult_Wander.gd" id="5_u5yjp"]
 [ext_resource type="Script" uid="uid://d36worp2g0fg6" path="res://Scripts/Steering_Behaviour.gd" id="6_hkhrk"]
+[ext_resource type="Script" uid="uid://cdidoxct6db3v" path="res://Scripts/Adult/Adult_Lay_Egg.gd" id="6_t6bck"]
 [ext_resource type="Script" uid="uid://crfns25tdufch" path="res://Scripts/Adult/Adult_Behaviour_Avoid.gd" id="7_aomp7"]
 [ext_resource type="Script" uid="uid://c5fh4idh8d57h" path="res://Scripts/Adult/Adult_Behaviour_Bounds.gd" id="8_t6bck"]
 [ext_resource type="Script" uid="uid://brt66yaapn6rw" path="res://Scripts/Adult/Adult_Behaviour_Seek.gd" id="9_u5yjp"]
@@ -22,10 +24,12 @@ size = Vector3(0.1, 0.1, 0.5)
 size = Vector3(0.1, 0.1, 0.5)
 
 [node name="AdultBody" type="RigidBody3D" unique_id=1061239084]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 script = ExtResource("1_pfcx5")
 bounds_radius = 15.0
-fly_height_min = -10.0
+fly_height_min = 0.0
 fly_height_max = 10.0
+egg_scene = ExtResource("2_u5yjp")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2083518274]
 mesh = SubResource("BoxMesh_0xm2m")
@@ -48,6 +52,10 @@ metadata/_custom_type_script = "uid://k4kmo8lh5rmh"
 [node name="Adult_Wander" type="Node" parent="StateMachine" unique_id=1336166407]
 script = ExtResource("5_u5yjp")
 metadata/_custom_type_script = "uid://bdrtv6kfmh18b"
+
+[node name="Adult_Lay_Egg" type="Node" parent="StateMachine" unique_id=28277316]
+script = ExtResource("6_t6bck")
+metadata/_custom_type_script = "uid://cdidoxct6db3v"
 
 [node name="Behaviours" type="Node" parent="." unique_id=199822738]
 script = ExtResource("6_hkhrk")
