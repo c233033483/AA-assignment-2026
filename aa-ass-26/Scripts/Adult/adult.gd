@@ -13,7 +13,7 @@ var target_food: Node3D = null
 var food_eaten: int = 0
 
 @export var food_to_lay_egg: int = 5
-@export var egg_scene: PackedScene
+@export var egg_scene: Resource
 
 @onready var _behaviours: Array[Steering_Behaviour] = []
 
@@ -82,7 +82,7 @@ func lay_egg() -> void:
 	if egg_scene == null:
 		print("No egg scene assigned!")
 		return
-	var egg := egg_scene.instantiate()
+	var egg := (egg_scene as PackedScene).instantiate()
 	var spawn_pos := global_position
 	get_parent().add_child(egg)
 	egg.global_position = spawn_pos

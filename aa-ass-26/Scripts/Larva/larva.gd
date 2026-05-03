@@ -2,7 +2,7 @@ class_name Larva extends CharacterBody3D
 
 var food_eaten: int
 @export var food_to_evolve: int = 5
-@export var adult_pref: PackedScene
+@export var adult_pref: Resource
 
 @export var speed: float = 3.0
 @export var max_force: float = 6.0
@@ -89,7 +89,7 @@ func evolve() -> void:
 	if adult_pref == null:
 		print("No adult scene assigned!")
 		return
-	var adult := adult_pref.instantiate()
+	var adult := (adult_pref as PackedScene).instantiate()
 	var spawn_pos := global_position
 	adult.global_position = spawn_pos
 	get_parent().add_child(adult)
