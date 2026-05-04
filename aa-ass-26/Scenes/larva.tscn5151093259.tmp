@@ -21,10 +21,10 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 axis_lock_linear_y = true
 axis_lock_angular_y = true
 script = ExtResource("1_kxc88")
+food_to_evolve = 1
 adult_pref = ExtResource("2_tw4yt")
-speed = 1.0
-max_force = 2.0
-turn_speed = 0.5
+speed = 1.5
+turn_speed = 2.0
 food_detect_radius = 3.0
 bounds_radius = 12.0
 
@@ -71,8 +71,3 @@ metadata/_custom_type_script = "uid://dp0468m51bgad"
 
 [node name="Animation" type="Node3D" parent="." unique_id=1997508370]
 script = ExtResource("12_tw4yt")
-segment_count = 9
-body_length = 0.75
-arch_height = 0.25
-wave_speed = 6.5
-colour = Color(0.4, 0.8, 0.5019608, 1)

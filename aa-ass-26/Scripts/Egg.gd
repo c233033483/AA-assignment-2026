@@ -1,6 +1,7 @@
 class_name Egg extends RigidBody3D
 
 @export var hatch_time: float  = 20.0
+@export var hatch_particle: GPUParticles3D
 
 func _ready() -> void:
 	add_to_group("eggs")
@@ -13,7 +14,7 @@ func _ready() -> void:
 	add_child(timer)
 
 func _hatch() -> void:
-	print("Hatching! larva_scene is: ", )
+	hatch_particle.emitting = true
 	var larva_scene := load("res://Scenes/larva.tscn") as PackedScene
 	var larva := larva_scene.instantiate()	
 	var spawn_pos := global_position

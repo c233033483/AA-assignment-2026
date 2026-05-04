@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://dngnk3h4ey6rt"]
+
+[sub_resource type="Curve" id="Curve_svunj"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.172043, 1), 0.0, 0.0, 0, 0, Vector2(0.52150536, 0.982103), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_p43x2"]
+curve = SubResource("Curve_svunj")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hbae8"]
+particle_flag_align_y = true
+spread = 180.0
+initial_velocity_min = 30.0
+initial_velocity_max = 35.0
+scale_min = 0.5
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_p43x2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wom7e"]
+albedo_color = Color(0.59616, 0.69, 0.2208, 1)
+emission_enabled = true
+emission = Color(0.55839795, 0.8048302, 0.2397525, 1)
+emission_energy_multiplier = 3.27
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_8irgl"]
+material = SubResource("StandardMaterial3D_wom7e")
+top_radius = 0.01
+bottom_radius = 0.0
+height = 0.25
+
+[node name="HatchParticle" type="GPUParticles3D" unique_id=1204403538]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+emitting = false
+amount = 34
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_hbae8")
+draw_pass_1 = SubResource("CylinderMesh_8irgl")
