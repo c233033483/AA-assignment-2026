@@ -5,9 +5,10 @@
 [ext_resource type="AudioStream" uid="uid://cpc6yjg3m2y3t" path="res://Effects/Audio/egg-hatching.mp3" id="3_klx23"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xt6u3"]
-albedo_color = Color(0.5374871, 0.6914021, 0.3036509, 1)
+albedo_color = Color(0.14417696, 0.7318346, 0.5815894, 1)
 emission_enabled = true
-emission_energy_multiplier = 1.38
+emission = Color(0.3530343, 0.9003281, 0.4104505, 1)
+emission_energy_multiplier = 2.28
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_y42sk"]
 material = SubResource("StandardMaterial3D_xt6u3")
@@ -17,7 +18,6 @@ radius = 0.0005
 height = 0.28998536
 
 [node name="Egg" type="RigidBody3D" unique_id=900463035 node_paths=PackedStringArray("hatch_particle", "hatching_audio")]
-axis_lock_linear_y = true
 axis_lock_angular_y = true
 script = ExtResource("1_xt6u3")
 hatch_particle = NodePath("HatchParticle")
