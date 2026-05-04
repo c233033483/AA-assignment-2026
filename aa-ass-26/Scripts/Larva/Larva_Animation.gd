@@ -55,8 +55,6 @@ func _process(delta: float) -> void:
 	while _trail.size() > segment_count * 20:
 		_trail.pop_back()
 
-	
-
 	for i in segment_count:
 		var target_dist := float(i) * _sample_spacing
 		# Place each segment along the trail at even spacing

@@ -2,11 +2,13 @@
 
 [ext_resource type="Script" uid="uid://bmnn7wqdpcps6" path="res://Scripts/Egg.gd" id="1_xt6u3"]
 [ext_resource type="PackedScene" uid="uid://dngnk3h4ey6rt" path="res://Effects/particles/hatch_particle.tscn" id="2_xt6u3"]
+[ext_resource type="AudioStream" uid="uid://cpc6yjg3m2y3t" path="res://Effects/Audio/egg-hatching.mp3" id="3_klx23"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xt6u3"]
-albedo_color = Color(0.5374871, 0.6914021, 0.3036509, 1)
+albedo_color = Color(0.14417696, 0.7318346, 0.5815894, 1)
 emission_enabled = true
-emission_energy_multiplier = 1.38
+emission = Color(0.3530343, 0.9003281, 0.4104505, 1)
+emission_energy_multiplier = 2.28
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_y42sk"]
 material = SubResource("StandardMaterial3D_xt6u3")
@@ -15,11 +17,11 @@ material = SubResource("StandardMaterial3D_xt6u3")
 radius = 0.0005
 height = 0.28998536
 
-[node name="Egg" type="RigidBody3D" unique_id=900463035 node_paths=PackedStringArray("hatch_particle")]
-axis_lock_linear_y = true
+[node name="Egg" type="RigidBody3D" unique_id=900463035 node_paths=PackedStringArray("hatch_particle", "hatching_audio")]
 axis_lock_angular_y = true
 script = ExtResource("1_xt6u3")
 hatch_particle = NodePath("HatchParticle")
+hatching_audio = NodePath("Eating audio")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=986888361]
 transform = Transform3D(0.2, 0, 0, 0, 0.15, 0, 0, 0, 0.2, 0, 0, 0)
@@ -31,3 +33,6 @@ shape = SubResource("CapsuleShape3D_c3uvd")
 
 [node name="HatchParticle" parent="." unique_id=1204403538 instance=ExtResource("2_xt6u3")]
 transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
+
+[node name="Eating audio" type="AudioStreamPlayer3D" parent="." unique_id=406080606]
+stream = ExtResource("3_klx23")

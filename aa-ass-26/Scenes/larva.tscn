@@ -12,11 +12,24 @@
 [ext_resource type="Script" uid="uid://dntysoxyuh5ie" path="res://Scripts/Larva/Behaviour_Seek.gd" id="10_qpxvs"]
 [ext_resource type="Script" uid="uid://dp0468m51bgad" path="res://Scripts/Larva/Behaviour_Wander.gd" id="11_udftk"]
 [ext_resource type="Script" uid="uid://daaumdiy6h006" path="res://Scripts/Larva/Larva_Animation.gd" id="12_tw4yt"]
+[ext_resource type="AudioStream" uid="uid://ddlf4kjew1epy" path="res://Effects/Audio/larva-moving.mp3" id="13_ewjii"]
+[ext_resource type="AudioStream" uid="uid://cj12bltwdpksq" path="res://Effects/Audio/larva-eating.mp3" id="14_kogyd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kogyd"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_kogyd"]
+material = SubResource("StandardMaterial3D_kogyd")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fwdh0"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_yc81s"]
+material = SubResource("StandardMaterial3D_fwdh0")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h2yge"]
 size = Vector3(0.25, 0.25, 1.25)
 
-[node name="LarvaBody" type="CharacterBody3D" unique_id=1181100274]
+[node name="LarvaBody" type="CharacterBody3D" unique_id=1181100274 node_paths=PackedStringArray("eating_audio")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 axis_lock_linear_y = true
 axis_lock_angular_y = true
@@ -27,8 +40,25 @@ max_force = 2.0
 turn_speed = 0.5
 food_detect_radius = 3.0
 bounds_radius = 12.0
+eating_audio = NodePath("Audio - eating")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2083518274]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D" unique_id=4522946]
+transform = Transform3D(0.050000004, 0, 0, 0, 0.050000004, 0, 0, 0, 0.050000004, 0.081988335, 0.009525349, -0.059514474)
+mesh = SubResource("SphereMesh_kogyd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D/MeshInstance3D" unique_id=2015406238]
+transform = Transform3D(0.49999988, 0, 0, 0, 0.49999988, 0, 0, 0, 0.49999988, -0.03572619, -0.02018489, -0.2953868)
+mesh = SubResource("SphereMesh_yc81s")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D" unique_id=313683967]
+transform = Transform3D(0.050000004, 0, 0, 0, 0.050000004, 0, 0, 0, 0.050000004, -0.07998015, 0.009525349, -0.059514474)
+mesh = SubResource("SphereMesh_kogyd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D/MeshInstance3D2" unique_id=163331510]
+transform = Transform3D(0.49999988, 0, 0, 0, 0.49999988, 0, 0, 0, 0.49999988, 0.009408474, -0.030277327, -0.2958908)
+mesh = SubResource("SphereMesh_yc81s")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1010085196]
 shape = SubResource("BoxShape3D_h2yge")
@@ -76,3 +106,14 @@ body_length = 0.75
 arch_height = 0.25
 wave_speed = 6.0
 colour = Color(0.4, 0.8, 0.5019608, 1)
+
+[node name="Audio - moving" type="AudioStreamPlayer3D" parent="." unique_id=354711789]
+transform = Transform3D(0.6666667, 0, 0, 0, 0.6666667, 0, 0, 0, 0.6666667, 0, 0, 0)
+stream = ExtResource("13_ewjii")
+volume_db = -17.313
+autoplay = true
+
+[node name="Audio - eating" type="AudioStreamPlayer3D" parent="." unique_id=1043235929]
+transform = Transform3D(0.6666667, 0, 0, 0, 0.6666667, 0, 0, 0, 0.6666667, 0, 0, 0)
+stream = ExtResource("14_kogyd")
+volume_db = -17.313

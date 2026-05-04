@@ -3,6 +3,8 @@ class_name Egg extends RigidBody3D
 @export var hatch_time: float  = 20.0
 @export var hatch_particle: GPUParticles3D
 
+@export var hatching_audio: AudioStreamPlayer3D
+
 func _ready() -> void:
 	add_to_group("eggs")
 	print("Egg ready, larva_pref is: ", "res://Scenes/larva.tscn")
