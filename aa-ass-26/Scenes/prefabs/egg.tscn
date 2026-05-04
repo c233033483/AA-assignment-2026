@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bm0tpppa5k6yt"]
 
 [ext_resource type="Script" uid="uid://bmnn7wqdpcps6" path="res://Scripts/Egg.gd" id="1_xt6u3"]
-[ext_resource type="PackedScene" uid="uid://dngnk3h4ey6rt" path="res://Scenes/particles/hatch_particle.tscn" id="2_xt6u3"]
+[ext_resource type="PackedScene" uid="uid://dngnk3h4ey6rt" path="res://Effects/particles/hatch_particle.tscn" id="2_xt6u3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xt6u3"]
 albedo_color = Color(0.5374871, 0.6914021, 0.3036509, 1)
@@ -16,6 +16,8 @@ radius = 0.0005
 height = 0.28998536
 
 [node name="Egg" type="RigidBody3D" unique_id=900463035 node_paths=PackedStringArray("hatch_particle")]
+axis_lock_linear_y = true
+axis_lock_angular_y = true
 script = ExtResource("1_xt6u3")
 hatch_particle = NodePath("HatchParticle")
 
@@ -28,3 +30,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0019506514, 0)
 shape = SubResource("CapsuleShape3D_c3uvd")
 
 [node name="HatchParticle" parent="." unique_id=1204403538 instance=ExtResource("2_xt6u3")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)

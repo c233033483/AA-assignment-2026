@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dl8ayjikt0t3u"]
+
+[ext_resource type="PackedScene" uid="uid://bm0tpppa5k6yt" path="res://Scenes/prefabs/egg.tscn" id="1_lq4et"]
+[ext_resource type="Script" uid="uid://bc6fns1gupxse" path="res://Scripts/Camera_controller.gd" id="2_siu27"]
+
+[node name="Testing" type="Node3D" unique_id=2040547055]
+
+[node name="Egg" parent="." unique_id=900463035 instance=ExtResource("1_lq4et")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.66471946, 0, 0.9401347)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1670865630]
+
+[node name="Button" type="Button" parent="CanvasLayer" unique_id=1645905703]
+offset_left = 18.0
+offset_top = 19.0
+offset_right = 189.0
+offset_bottom = 81.0
+text = "hatch
+"
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1509963166]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.788258, 0, 2.0634956)
+script = ExtResource("2_siu27")
+
+[connection signal="button_down" from="CanvasLayer/Button" to="Egg" method="_hatch"]

@@ -55,13 +55,14 @@ func _process(delta: float) -> void:
 	while _trail.size() > segment_count * 20:
 		_trail.pop_back()
 
-	# Place each segment along the trail at even spacing
-	var dist_acc: float = 0.0
-	var trail_idx: int  = 0
+	
 
 	for i in segment_count:
 		var target_dist := float(i) * _sample_spacing
-
+		# Place each segment along the trail at even spacing
+		var dist_acc: float = 0.0
+		var trail_idx: int  = 0
+		var placed: bool
 		# Walk along trail until we've covered target_dist
 		while trail_idx + 1 < _trail.size():
 			var step := _trail[trail_idx].distance_to(_trail[trail_idx + 1])
@@ -76,6 +77,11 @@ func _process(delta: float) -> void:
 
 				# Place in world space (node is child of boid so convert)
 				_segments[i].global_position = world_pos
+				placed = true
 				break
 			dist_acc  += step
 			trail_idx += 1
+			
+			# Fallback if no valid segment found
+		if not placed:
+			_segments[i].global_position = _trail.back()

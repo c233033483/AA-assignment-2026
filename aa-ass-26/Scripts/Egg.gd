@@ -14,6 +14,8 @@ func _ready() -> void:
 	add_child(timer)
 
 func _hatch() -> void:
+	hatch_particle.restart()
+	hatch_particle.reparent(get_parent(), true)
 	hatch_particle.emitting = true
 	var larva_scene := load("res://Scenes/larva.tscn") as PackedScene
 	var larva := larva_scene.instantiate()	
@@ -21,3 +23,7 @@ func _hatch() -> void:
 	get_parent().add_child(larva)
 	larva.global_position = spawn_pos
 	queue_free()
+
+func _trigger_particle() -> void:
+	hatch_particle.restart()
+	hatch_particle.emitting = true

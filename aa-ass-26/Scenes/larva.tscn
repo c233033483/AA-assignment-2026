@@ -71,8 +71,8 @@ metadata/_custom_type_script = "uid://dp0468m51bgad"
 
 [node name="Animation" type="Node3D" parent="." unique_id=1997508370]
 script = ExtResource("12_tw4yt")
-segment_count = 9
+segment_count = 12
 body_length = 0.75
 arch_height = 0.25
-wave_speed = 6.5
+wave_speed = 6.0
 colour = Color(0.4, 0.8, 0.5019608, 1)
