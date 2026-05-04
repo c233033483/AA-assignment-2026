@@ -15,6 +15,8 @@ var food_eaten: int = 0
 @export var food_to_lay_egg: int = 5
 @export var egg_scene: Resource
 
+@export var eating_audio: AudioStreamPlayer3D
+
 @onready var _behaviours: Array[Steering_Behaviour] = []
 
 func _ready() -> void:
@@ -73,6 +75,7 @@ func find_nearest_adult() -> Node3D:
  
 func eat_food() -> void:
 	food_eaten += 1
+	eating_audio.play()
 	print("Adult food eaten: %d / %d" % [food_eaten, food_to_lay_egg])
 	if food_eaten >= food_to_lay_egg:
 		food_eaten = 0

@@ -9,6 +9,8 @@ extends Node3D
 @export var larva_count: int = 5
 @export var larva_pref: PackedScene
 
+@export var feed_audio: AudioStreamPlayer3D
+
 func _ready() -> void:
 	_spawn_larva()
 	_spawn_food_wave()
@@ -24,6 +26,7 @@ func _spawn_food_wave() -> void:
 		_spawn_one_food()
 
 func _spawn_one_food() -> void:
+	feed_audio.play()
 	var food := RigidBody3D.new()
 	food.add_to_group("food")
 	food.gravity_scale = 0.08   # drifts down slowly like fish food

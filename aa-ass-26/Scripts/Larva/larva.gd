@@ -11,6 +11,8 @@ var food_eaten: int
 @export var avoid_radius: float = 2.0
 @export var bounds_radius: float = 9.0
 
+@export var eating_audio: AudioStreamPlayer3D
+
 var target_food: Node3D = null
 
 @onready var _behaviours: Array[Steering_Behaviour] = []
@@ -81,6 +83,7 @@ func find_nearest_larva() -> Node3D:
 
 func eat_food() -> void:
 	food_eaten += 1
+	eating_audio.play()
 	print("Food eaten: %d / %d" % [food_eaten, food_to_evolve])
 	if food_eaten >= food_to_evolve:
 		evolve()
