@@ -14,8 +14,8 @@ emission_energy_multiplier = 2.28
 material = SubResource("StandardMaterial3D_xt6u3")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_c3uvd"]
-radius = 0.0005
-height = 0.28998536
+radius = 0.11669922
+height = 0.39257813
 
 [node name="Egg" type="RigidBody3D" unique_id=900463035 node_paths=PackedStringArray("hatch_particle", "hatching_audio")]
 axis_lock_angular_y = true
@@ -28,7 +28,7 @@ transform = Transform3D(0.2, 0, 0, 0, 0.15, 0, 0, 0, 0.2, 0, 0, 0)
 mesh = SubResource("CapsuleMesh_y42sk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=683153465]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0019506514, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.028056622, 0)
 shape = SubResource("CapsuleShape3D_c3uvd")
 
 [node name="HatchParticle" parent="." unique_id=1204403538 instance=ExtResource("2_xt6u3")]

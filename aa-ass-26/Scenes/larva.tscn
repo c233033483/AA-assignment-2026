@@ -34,6 +34,7 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 axis_lock_linear_y = true
 axis_lock_angular_y = true
 script = ExtResource("1_kxc88")
+food_to_evolve = 6
 adult_pref = ExtResource("2_tw4yt")
 speed = 1.0
 max_force = 2.0

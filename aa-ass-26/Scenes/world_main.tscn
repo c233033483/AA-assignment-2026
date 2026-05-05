@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://dwm4q2aeo4rsa" path="res://Scenes/larva.tscn" id="1_8pcac"]
 [ext_resource type="Script" uid="uid://cwhsh7so70ev0" path="res://Scripts/game_manager.gd" id="1_jq62l"]
 [ext_resource type="Script" uid="uid://bc6fns1gupxse" path="res://Scripts/Camera_controller.gd" id="4_77se5"]
-[ext_resource type="Texture2D" uid="uid://fbjnkrnraxsl" path="res://Materials/Checkerboard_pattern.svg.png" id="4_t32ky"]
 [ext_resource type="AudioStream" uid="uid://8wgytiretyos" path="res://Effects/Audio/feed.mp3" id="5_lsoic"]
 [ext_resource type="AudioStream" uid="uid://cgn4nrmh06hqb" path="res://Effects/Audio/background-ambience.mp3" id="5_t32ky"]
 [ext_resource type="AudioStream" uid="uid://dydpwrv1dpwo4" path="res://Effects/Audio/freesound_community-pulse-sequence-60573.mp3" id="7_so5oa"]
@@ -21,19 +20,22 @@ panorama = SubResource("NoiseTexture2D_jq62l")
 sky_material = SubResource("PanoramaSkyMaterial_77se5")
 
 [sub_resource type="Environment" id="Environment_lsoic"]
-background_mode = 2
-background_color = Color(1, 1, 1, 1)
+background_mode = 1
+background_color = Color(0.15294118, 0.24705882, 0.38039216, 1)
 background_energy_multiplier = 0.4
 sky = SubResource("Sky_t32ky")
 ambient_light_source = 2
-ambient_light_color = Color(0.48626226, 0.8527731, 0.8405621, 1)
+ambient_light_color = Color(0.162, 0.21950002, 0.3, 1)
+ambient_light_energy = 1.25
+fog_enabled = true
+fog_light_color = Color(0.21219799, 0.3297082, 0.4962483, 1)
+fog_density = 0.04
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lsoic"]
-albedo_texture = ExtResource("4_t32ky")
-uv1_scale = Vector3(20, 20, 20)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_so5oa"]
+albedo_color = Color(0.8145482, 0.66250455, 0.40810555, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_so5oa"]
-material = SubResource("StandardMaterial3D_lsoic")
+material = SubResource("StandardMaterial3D_so5oa")
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_77se5"]
 
@@ -72,7 +74,7 @@ transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 7.281, 0.36
 script = ExtResource("4_77se5")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1129652194]
-transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 0, 0.0047619343, 0)
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, 0.0047619343, 0)
 mesh = SubResource("PlaneMesh_so5oa")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=505444362]
@@ -98,6 +100,11 @@ autoplay = true
 
 [node name="debug" type="Node3D" parent="." unique_id=1063352543]
 script = ExtResource("8_2acip")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1146808027]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3130436, 0)
+light_color = Color(0.18192616, 0.45438135, 0.44757545, 1)
+light_energy = 0.4
 
 [connection signal="button_down" from="CanvasLayer/Button2" to="debug" method="toggle"]
 [connection signal="button_down" from="CanvasLayer/Button" to="." method="_spawn_one_food"]

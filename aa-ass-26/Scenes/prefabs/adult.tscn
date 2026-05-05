@@ -19,6 +19,17 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_h2yge"]
 size = Vector3(0.5, 0.5, 2.5)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kogyd"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_hkhrk"]
+material = SubResource("StandardMaterial3D_kogyd")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fwdh0"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_lsclu"]
+material = SubResource("StandardMaterial3D_fwdh0")
+
 [node name="AdultBody" type="RigidBody3D" unique_id=1061239084 node_paths=PackedStringArray("eating_audio")]
 script = ExtResource("1_pfcx5")
 speed = 2.0
@@ -27,6 +38,7 @@ food_detect_radius = 5.0
 bounds_radius = 15.0
 fly_height_min = 0.0
 fly_height_max = 10.0
+food_to_lay_egg = 15
 egg_scene = ExtResource("2_u5yjp")
 eating_audio = NodePath("Audio - eating")
 
@@ -89,3 +101,19 @@ autoplay = true
 [node name="Audio - eating" type="AudioStreamPlayer3D" parent="." unique_id=546703532]
 stream = ExtResource("15_lsclu")
 volume_db = -17.313
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1854200914]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.12541676, 0.009525349, -0.46910575)
+mesh = SubResource("SphereMesh_hkhrk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D2" unique_id=1383246244]
+transform = Transform3D(0.49999988, 0, 0, 0, 0.49999988, 0, 0, 0, 0.49999988, -0.03572619, -0.02018489, -0.2953868)
+mesh = SubResource("SphereMesh_lsclu")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=295476091]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.102303624, 0.009525349, -0.46910575)
+mesh = SubResource("SphereMesh_hkhrk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D3" unique_id=1655710993]
+transform = Transform3D(0.49999988, 0, 0, 0, 0.49999988, 0, 0, 0, 0.49999988, 0.009408474, -0.030277327, -0.2958908)
+mesh = SubResource("SphereMesh_lsclu")
