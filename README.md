@@ -4,7 +4,7 @@ By Sarah Bullough, C23303483, TU984
 
 # Video
 
-[![YouTube]([http://img.youtube.com/vi/J2kHSSFA4NU/0.jpg)](https://www.youtube.com/watch?v=J2kHSSFA4NU](https://youtu.be/vTxgbnPFA_I))
+[![Demo Video](https://img.youtube.com/vi/vTxgbnPFA_I/0.jpg)](https://www.youtube.com/watch?v=vTxgbnPFA_I)
 
 # Description of the project
 
