@@ -2,9 +2,14 @@
 
 By Sarah Bullough, C23303483, TU984
 
+# Video
+
+[![YouTube]([http://img.youtube.com/vi/J2kHSSFA4NU/0.jpg)](https://www.youtube.com/watch?v=J2kHSSFA4NU](https://youtu.be/vTxgbnPFA_I))
+
 # Description of the project
 
-This project is an underwater ecosystem simulation. It simulates a creature lifecycle in which begins wiith a worm-like larva creature as it crawls along the seabed, eating food that drifts down from above. When a larva has eaten enough food it evolves into a manta ray-like adult that flies freely through the water column. These mantarays lay eggs upon eating enough food, which fall to the ground and hatch into new larva after a period of time, completing the lifecycle.
+This project is an underwater ecosystem aquarium simulation. It simulates a creature lifecycle in which begins with a worm-like larva creature as it crawls along the seabed, eating food that drifts down from above. When a larva has eaten enough food it evolves into a manta ray-like adult that flies freely through the water column. These mantarays lay eggs upon eating enough food, which fall to the ground and hatch into new larva after a period of time, completing the lifecycle.
+
 The player can observe the ecosystem from a free-flying camera and spawn additional food manually via a UI button.
 
 # Instructions for use
@@ -19,11 +24,14 @@ The player can observe the ecosystem from a free-flying camera and spawn additio
 # How it works:
 
 The boids in this project use a finite state machine alongside weighted steering behaviours to move and do different things. 
+
 Each creature has a StateMachine node that tracks a current state. Every frame it calls _think() from the current state. States are responsible for toggling which steering behaviours are currently active, and checking transition conditions in _think().
+
 Steering behaviours are used by various behaviour nodes on each creature. Each frame, the creature loops through all active behaviours, and accumulates their force vectors (it wil stop adding the force when the total exceeds max_force). This means the higher weighted forces drive the boid the most. The force is lerped into the creature's velocity for smooth turning.
-Larva states: Wander, Seek (food detected), Avoid (another larva too close)
-Adult states: Wander, Seek (food detected), Avoid (another adult too close) → Lay Egg (after eating 5 food)
-Lifecycle: Larva eats 5 food → evolves into Adult → Adult eats 5 food → lays Egg → Egg falls and hatches after 20 seconds → new Larva
+
+- Larva states: Wander, Seek (food detected), Avoid (another larva too close)
+- Adult states: Wander, Seek (food detected), Avoid (another adult too close) → Lay Egg (after eating 5 food)
+- Lifecycle: Larva eats 5 food → evolves into Adult → Adult eats 5 food → lays Egg → Egg falls and hatches after 20 seconds → new Larva
 Food spawns as RigidBody3D nodes with low gravity, drifting slowly downward so adults can intercept it in the air and larva can collect what settles on the ground.
 
 # List of classes/assets in the project
